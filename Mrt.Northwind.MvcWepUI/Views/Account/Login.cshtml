@@ -1,0 +1,47 @@
+﻿@using System.Threading.Tasks
+@model Mrt.Northwind.MvcWepUI.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "../_AdminLayout";
+}
+<br/>
+<div class="text-center">
+    <main class="form-signin w-100 m-auto">
+        <img class="mb-4" src="~/Tools/MURATOGLU.png" alt="" width="72" height="57">
+        <h1 class="h3 mb-3 fw-normal">Please Sign In</h1>
+        <form asp-controller="Account" asp-action="Login" method="post" role="form">
+            <div class="form-floating">
+                <input asp-for="UserName" class="form-control" id="floatingInput" placeholder="User Name">
+                <span asp-validation-for="UserName"></span>
+                <label for="floatingInput">User Name</label>
+            </div>
+            <br/>
+            <div class="form-floating">
+                <input asp-for="Password" class="form-control" id="floatingPassword" placeholder="Password">
+                <span asp-validation-for="Password"></span>
+                <label for="floatingPassword">Password</label>
+            </div>
+            <br/>
+            <div class="checkbox mb-3">
+                <label>
+                    <input asp-for="RememberMe">Remember Me
+                </label>
+            </div>
+            <br/>
+            <input class="w-100 btn btn-lg btn-primary" type="submit" value="Login">
+            <p class="mt-5 mb-3 text-muted"></p>
+
+            <div class="form-group">
+                <div class="col-md-12 control">
+                    <div style="border-top: 1px solid #888; padding-top: 15px; font-size: 85%">
+                        Don't have an account!
+                        <a asp-controller="Account" asp-action="Register">
+                            Sign Up Here
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+</div>

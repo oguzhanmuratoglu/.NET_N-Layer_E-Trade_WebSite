@@ -1,0 +1,55 @@
+﻿@model Mrt.Northwind.MvcWepUI.Models.CardSummaryViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "../_Layout";
+}
+
+<h2>Your Card</h2>
+<table class="table">
+    <tr>
+        <td>Product Name</td>
+        <td>Unit Price</td>
+        <td>UnitsInStock</td>
+        <td>Quantity</td>
+        <td></td>
+    </tr>
+    @foreach (var item in @Model.Card.CartLines)
+    {
+        <tr>
+            <td>@item.Product.ProductName</td>
+            <td>@item.Product.UnitPrice</td>
+            <td>@item.Product.UnitsInStock</td>
+            <td>@item.Quantity</td>
+            <td class="text-right"><a class="btn btn-xs btn-danger" asp-controller="Card" asp-action="Remove" asp-route-productId="@item.Product.ProductId"><span class="bi bi-x-circle-fill"></span>&nbsp;Remove from card</a></td>
+        </tr>
+    }
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td >
+            <h3>Total</h3>
+        </td>
+        <td class="text-right">
+            <h3>
+                <strong>@Model.Card.Total</strong>
+            </h3>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            <a asp-controller="Product" asp-action="Index" class="btn btn-xs btn-primary">
+                <span class="bi bi-shop"></span>&nbsp; Continue to shopping
+            </a>
+        </td>
+        <td class="text-right">
+            <a asp-controller="Card" asp-action="Complete" class="btn btn-xs btn-success">
+                <span class="bi bi-bag-check-fill">&nbsp; Go to Checkout</span>
+            </a>
+        </td>
+    </tr>
+</table>
